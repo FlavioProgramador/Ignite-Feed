@@ -1,11 +1,11 @@
 .header {
     display: flex;
     flex-direction: row;
-    justify-content: center; /* eixo horizontal */
-    align-items: center;     /* eixo vertical */
+    justify-content: center; 
+    align-items: center;     
     margin: 0 auto;
     gap: 16px;
-    background-color: #202024;
+    background-color: var(--gray-800);
     height: 100px;
 }
 
