@@ -1,6 +1,7 @@
 import styles from "./Sidebar.module.css";
 import botaoEditarPerfil from "../assets/botao-editar-perfil.svg";
 import { Avatar } from "./Avatar";
+import { AuthorInfo } from "./AuthorInfo";
 
 export function Sidebar() {
   return (
@@ -9,8 +10,7 @@ export function Sidebar() {
 
       <div className={styles.profile}>
         <Avatar src="https://github.com/diego3g.png"/>
-        <strong >Flávio Costa</strong>
-        <span className={styles.role}>Front-end Developer</span>
+        <AuthorInfo name="Flávio Costa" role="Front-end Developer"/>
       </div>
       <footer className={styles.footer}>
         <a href=""><img src={botaoEditarPerfil} alt="Editar Perfil" />Editar Perfil</a>

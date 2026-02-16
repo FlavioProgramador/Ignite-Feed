@@ -1,0 +1,74 @@
+.post {
+  background: var(--gray-800);
+  border-radius: 8px;
+  padding: 40px;
+}
+
+.postHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.authorInfoContainer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.publishedAt {
+  font-size: 0.875rem;
+  color: var(--gray-400);
+}
+
+.content {
+  line-height: 1.6;
+  color: var(--gray-300);
+  margin-top: 24px;
+}
+
+.content p {
+  margin-top: 16px;
+}
+
+.content a {
+    text-decoration: none;
+    font-weight: 700;
+    color: var(--green-500);
+}
+
+.commentForm {
+    margin-top: 24px;
+    border-top: 1px solid var(--gray-600);
+    padding-top: 24px;
+    line-height: 1.6;
+    color: var(--gray-100);
+}
+
+.commentForm textarea {
+    width: 100%;
+    height: 96px;
+    margin-top: 16px;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid var(--green-500);
+    color: var(--gray-100);
+    background-color: var(--gray-900);
+    resize: none;
+}
+
+.commentForm textarea:focus {
+    outline: 2px solid var(--green-500);
+    outline-offset: 2px;
+}
+
+.commentForm footer button {
+    margin-top: 16px;
+    padding: 16px 24px;
+    border-radius: 8px;
+    border: none;
+    background-color: var(--green-500);
+    color: var(--white);
+    font-weight: 700;
+    cursor: pointer;
+}
