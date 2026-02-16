@@ -1,9 +1,11 @@
 import styles from './Header.module.css'
+import { Logo } from './Logo'
 
-export function Header() {
+export function Header({children}) {
     return (
         <header className={styles.header}>
-            <strong>ignite feed</strong>
+            <Logo />
+            <p>{children}</p>
         </header>
     )
 }

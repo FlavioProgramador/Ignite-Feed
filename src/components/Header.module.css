@@ -1,3 +1,16 @@
 .header {
-    background-color: ;
+    display: flex;
+    flex-direction: row;
+    justify-content: center; /* eixo horizontal */
+    align-items: center;     /* eixo vertical */
+    margin: 0 auto;
+    gap: 16px;
+    background-color: #202024;
+    height: 100px;
+}
+
+.header p {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 26px;
 }
