@@ -1,17 +1,100 @@
 import { Header } from "./components/Header";
 import styles from "./App.module.css";
+import modalStyles from "./Modal.module.css";
 import { Post } from "./components/Post";
 import { Sidebar } from "./components/Sidebar";
+import { useState } from "react";
 
 function App() {
+  const [posts, setPosts] = useState([]);
+
+  async function handleCreatePost(formData) {
+    const authorName = formData.get("authorName");
+    const authorRole = formData.get("authorRole");
+    const avatarUrl = formData.get("avatarUrl");
+    const paragraphs = formData.get("paragraphs").split("\n");
+    const linkText = formData.get("linkText");
+    const linkUrl = formData.get("linkUrl");
+    const hashtags = formData.get("hashtags").split(" ").filter(Boolean);
+
+    setPosts((prevPost) => [
+      {
+        id: Date.now(),
+        author: {
+          avatarUrl,
+          name: authorName,
+          role: authorRole,
+        },
+        publishedAt: new Date(),
+        paragraphs,
+        link: { text: linkText, url: linkUrl },
+        hashtags,
+      },
+      ...prevPost,
+    ]);
+    setShowModal(false); // Fecha o modal após criar o post
+  }
+
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <div>
       <Header />
       <div className={styles.wrapper}>
-        <Sidebar />
+        <div className={styles.sidebarColumn}>
+          <Sidebar />
+          <button
+            className={styles.buttonCreatePost}
+            onClick={() => setShowModal(true)}
+          >
+            Criar Post
+          </button>
+        </div>
+        {showModal && (
+          <div className={modalStyles.modalBackdrop}>
+            <div className={modalStyles.modalContainer}>
+              <button
+                className={modalStyles.closeButton}
+                onClick={() => setShowModal(false)}
+              >
+                ×
+              </button>
+              <form
+                className={styles.newPostForm}
+                action={async (formData) => {
+                  await handleCreatePost(formData);
+                }}
+              >
+                <input name="authorName" placeholder="Nome do autor" required />
+                <input name="authorRole" placeholder="Cargo do autor" required />
+                <input name="avatarUrl" placeholder="URL do avatar" required />
+                <textarea
+                  name="paragraphs"
+                  placeholder="Parágrafos (um por linha)"
+                  required
+                />
+                <input name="linkText" placeholder="Texto do link" />
+                <input name="linkUrl" placeholder="URL do link" />
+                <input
+                  name="hashtags"
+                  placeholder="Hashtags (separadas por espaço)"
+                />
+                <button type="submit">Publicar</button>
+              </form>
+            </div>
+          </div>
+        )}
         <main className={styles.main}>
-          <Post/>
-
+          {posts.map(post => (
+            <Post
+              key={post.id}
+              author={post.author}
+              publishedAt={post.publishedAt}
+              paragraphs={post.paragraphs}
+              link={post.link}
+              hashtags={post.hashtags}
+            />
+          ))}
         </main>
       </div>
     </div>

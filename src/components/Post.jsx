@@ -1,39 +1,35 @@
-import { AuthorInfo } from "./AuthorInfo";
 import { Avatar } from "./Avatar";
+import { AuthorInfo } from "./AuthorInfo";
 import styles from "./Post.module.css";
 
-export function Post() {
+export function Post({ author, publishedAt, paragraphs, link, hashtags }) {
   return (
     <div className={styles.post}>
       <header className={styles.postHeader}>
         <div className={styles.authorInfoContainer}>
-          <Avatar src="https://github.com/flaviobastos.png" />
-          <AuthorInfo name="João Ricardo" role="Cibersecurity" />
+          <Avatar src={author.avatarUrl} />
+          <AuthorInfo name={author.name} role={author.role} />
         </div>
-        <time className={styles.publishedAt}>Publicado a 1h</time>
+        <time className={styles.publishedAt}>{typeof publishedAt === 'string' ? publishedAt : publishedAt.toLocaleString()}</time>
       </header>
       <div className={styles.content}>
-        <p>Fala galeraa 👋</p>
-        <p>
-          Acabei de subir mais um projeto no meu portifa. É um projeto que fiz
-          no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀
-        </p>
-        <p>
-          <a href="#">jane.design/doctorcare</a>
-        </p>
-        <p>
-          <a href="#">#novoprojeto</a> 
-          <a href="#">#nlw</a>{" "}
-          <a href="#">#rocketseat</a>
-        </p>
+        {paragraphs && paragraphs.map((text, idx) => (
+          <p key={idx}>{text}</p>
+        ))}
+        {link && link.url && (
+          <p>
+            <a href={link.url}>{link.text}</a>
+          </p>
+        )}
+        {hashtags && hashtags.length > 0 && (
+          <p>
+            {hashtags.map(tag => (
+              <a key={tag} href="#">{tag} </a>
+            ))}
+          </p>
+        )}
       </div>
-      <form className={styles.commentForm}>
-        <strong>Deixe seu feedback</strong>
-        <textarea placeholder="Deixe um comentario"></textarea>
-        <footer>
-            <button type="submit"> Publicar</button>
-        </footer>
-      </form>
+      {/* ...comentário e outras partes... */}
     </div>
   );
 }
