@@ -13,7 +13,7 @@ export function Sidebar() {
         <AuthorInfo name="Flávio Costa" role="Front-end Developer" />
       </div>
       <footer className={styles.footer}>
-        <a href=""><img src={botaoEditarPerfil} alt="Editar Perfil" />Editar Perfil</a>
+        <a href="#"><img src={botaoEditarPerfil} alt="Editar Perfil" />Editar Perfil</a>
       </footer>
     </aside>
   );

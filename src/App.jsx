@@ -16,6 +16,7 @@ function App() {
     const linkText = formData.get("linkText");
     const linkUrl = formData.get("linkUrl");
     const hashtags = formData.get("hashtags").split(" ").filter(Boolean);
+    const files = formData.getAll("media");
 
     setPosts((prevPost) => [
       {
@@ -29,10 +30,15 @@ function App() {
         paragraphs,
         link: { text: linkText, url: linkUrl },
         hashtags,
+        media: files.filter((file) => file && file.size > 0).map(
+          (file) => ({
+            url: URL.createObjectURL(file),
+            type: file.type,
+          })),
       },
       ...prevPost,
     ]);
-    setShowModal(false); // Fecha o modal após criar o post
+    setShowModal(false);
   }
 
   const [showModal, setShowModal] = useState(false);
@@ -66,15 +72,23 @@ function App() {
                 }}
               >
                 <input name="authorName" placeholder="Nome do autor" required />
-                <input name="authorRole" placeholder="Cargo do autor" required />
+                <input
+                  name="authorRole"
+                  placeholder="Cargo do autor"
+                />
                 <input name="avatarUrl" placeholder="URL do avatar" required />
                 <textarea
                   name="paragraphs"
                   placeholder="Parágrafos (um por linha)"
-                  required
                 />
                 <input name="linkText" placeholder="Texto do link" />
                 <input name="linkUrl" placeholder="URL do link" />
+                <input
+                  type="file"
+                  name="media"
+                  accept="image/*,video/*"
+                  multiple
+                />
                 <input
                   name="hashtags"
                   placeholder="Hashtags (separadas por espaço)"
@@ -85,13 +99,14 @@ function App() {
           </div>
         )}
         <main className={styles.main}>
-          {posts.map(post => (
+          {posts.map((post) => (
             <Post
               key={post.id}
               author={post.author}
               publishedAt={post.publishedAt}
               paragraphs={post.paragraphs}
               link={post.link}
+              media={post.media}
               hashtags={post.hashtags}
             />
           ))}
