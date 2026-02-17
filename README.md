@@ -1,18 +1,45 @@
-# React + Vite
+# Ignite Feed
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Projeto desenvolvido como parte do curso Ignite da Rocketseat, consistindo em uma aplicação de feed de posts com funcionalidades interativas
 
-Currently, two official plugins are available:
+## Tecnologias utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React
+- CSS Modules / Styled Components
 
-## React Compiler
+## Instalação e uso
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+1. Clone o repositório:
 
-Note: This will impact Vite dev & build performances.
+   ```bash
+   git clone https://github.com/FlavioProgramador/Ignite-Feed.git
+   cd Ignite-Feed
+   ```
 
-## Expanding the ESLint configuration
+2. Instale as dependências:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+   ```bash
+   npm install
+   ```
+
+3. Rode o projeto:
+
+   ```bash
+   npm run dev
+   ```
+
+Acesse o projeto via [http://localhost:3000](http://localhost:3000)
+
+## Funcionalidades
+
+- Exibição de posts em formato de feed
+- Interação por meio de comentários
+
+## Contribuição
+
+Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests.
+
+## Licença
+
+Este projeto está sob a licença MIT.
+
